@@ -1,0 +1,7 @@
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\bin\Debug\ConsoleAppLoop2.exe.config
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\bin\Debug\ConsoleAppLoop2.exe
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\bin\Debug\ConsoleAppLoop2.pdb
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\obj\Debug\ConsoleAppLoop2.csproj.AssemblyReference.cache
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\obj\Debug\ConsoleAppLoop2.csproj.CoreCompileInputs.cache
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\obj\Debug\ConsoleAppLoop2.exe
+C:\.Folder\VS\ConsoleAppLoop2\ConsoleAppLoop2\obj\Debug\ConsoleAppLoop2.pdb

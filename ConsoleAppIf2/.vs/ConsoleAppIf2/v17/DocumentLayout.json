@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\.Folder\\VS\\ConsoleAppIf2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EE8F4377-DE04-4194-AD9C-8DC8E4B57198}|ConsoleAppIf2\\ConsoleAppIf2.csproj|c:\\.folder\\vs\\consoleappif2\\consoleappif2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE8F4377-DE04-4194-AD9C-8DC8E4B57198}|ConsoleAppIf2\\ConsoleAppIf2.csproj|solutionrelative:consoleappif2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\.Folder\\VS\\ConsoleAppIf2\\ConsoleAppIf2\\Program.cs",
+              "RelativeDocumentMoniker": "ConsoleAppIf2\\Program.cs",
+              "ToolTip": "C:\\.Folder\\VS\\ConsoleAppIf2\\ConsoleAppIf2\\Program.cs",
+              "RelativeToolTip": "ConsoleAppIf2\\Program.cs",
+              "ViewState": "AgIAABIBAAAAAAAAAAAWwCkBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T09:26:04.583Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

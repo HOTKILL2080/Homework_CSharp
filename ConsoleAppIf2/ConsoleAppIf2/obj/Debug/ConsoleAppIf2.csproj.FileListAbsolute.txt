@@ -1,0 +1,7 @@
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\bin\Debug\ConsoleAppIf2.exe.config
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\bin\Debug\ConsoleAppIf2.exe
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\bin\Debug\ConsoleAppIf2.pdb
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\obj\Debug\ConsoleAppIf2.csproj.AssemblyReference.cache
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\obj\Debug\ConsoleAppIf2.csproj.CoreCompileInputs.cache
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\obj\Debug\ConsoleAppIf2.exe
+C:\.Folder\VS\ConsoleAppIf2\ConsoleAppIf2\obj\Debug\ConsoleAppIf2.pdb
