@@ -1,0 +1,7 @@
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\obj\Debug\ConsoleAppBookingCinema.csproj.AssemblyReference.cache
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\obj\Debug\ConsoleAppBookingCinema.csproj.CoreCompileInputs.cache
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\bin\Debug\ConsoleAppBookingCinema.exe.config
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\bin\Debug\ConsoleAppBookingCinema.exe
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\bin\Debug\ConsoleAppBookingCinema.pdb
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\obj\Debug\ConsoleAppBookingCinema.exe
+C:\.Folder\VS\ConsoleAppBookingCinema\ConsoleAppBookingCinema\obj\Debug\ConsoleAppBookingCinema.pdb
