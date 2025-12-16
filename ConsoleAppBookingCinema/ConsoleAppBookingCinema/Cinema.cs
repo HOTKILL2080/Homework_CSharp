@@ -285,6 +285,7 @@ namespace ConsoleAppBookingCinema
                     if (action.ToLower() == "да" || action == "1")
                     {
                         cancel_booking(date, int.Parse(row), int.Parse(seat));
+                        show_cinema_hall(date);
                         break;
                     }
                     else if (action.ToLower() == "нет" || action == "2")

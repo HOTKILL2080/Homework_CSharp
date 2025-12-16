@@ -41,11 +41,16 @@ namespace ConsoleAppBookingCinema
             string date;
             string action;
 
-            Console.Write("\n\n\n                               ");
-            Console.WriteLine("Введите сегодняшнюю дату которая больше чем 01.01.2000 10:00");
+            Console.Write("\n\n\n                                     ");
+            Console.WriteLine("Управление происходит написанием цифр или");
+            Console.Write("                                             ");
+            Console.WriteLine("ключевых слов в 'кавычках'");
+
+            Console.Write("\n\n\n                            ");
+            Console.WriteLine("Введите сегодняшнюю дату которая больше или равна дате 01.01.2000 10:00");
             Console.Write("                                     ");
             Console.WriteLine("или нажмите ВВОД тогда применется 01.01.2000 10:00");
-            today_date = input_date(today_date);
+            today_date = input_date(today_date, false);
             Console.Clear();
 
             random_booking_timetable(generate_dates(10, today_date), array_cinema_hall);
@@ -180,13 +185,19 @@ namespace ConsoleAppBookingCinema
             Console.Clear();
         }
         // next_time - меняет текущее время на следуйщее по порядку или на указанную дату
-        static string next_time(string date, string today_date) // Сука никогда так не пишите в классе Cinema есть 
-        {                                                       // аналог кода в котором я испытал боль в
+        static string next_time(string date, string today_date, bool forceNext = true)
+        {
             if (date == "")
             {
                 date = today_date;
             }
-            if (date == today_date)
+            string dateOnly = date.Substring(0, 10);
+            string todayDateOnly = today_date.Substring(0, 10);
+            if (!forceNext)
+            {
+                return date;
+            }
+            if (dateOnly == todayDateOnly) 
             {
                 if (date.Substring(11, 5) == "10:00")
                 {
@@ -224,10 +235,29 @@ namespace ConsoleAppBookingCinema
                     else
                     {
                         date = date.Replace(date.Substring(6, 4), (int.Parse(date.Substring(6, 4)) + 1).ToString());
-                        date = date.Remove(3, 2).Insert(3, "01");             
-                        date = date.Remove(0, 2).Insert(0, "01");             
-                        date = date.Replace("22:15", "10:00");                
-                    }                                                                  
+                        date = date.Remove(3, 2).Insert(3, "01");
+                        date = date.Remove(0, 2).Insert(0, "01");
+                        date = date.Replace("22:15", "10:00");
+                    }
+                }
+            }
+            else
+            {
+                if (date.Substring(11, 5) == "10:00")
+                {
+                    date = date.Replace("10:00", "14:30");
+                }
+                else if (date.Substring(11, 5) == "14:30")
+                {
+                    date = date.Replace("14:30", "19:00");
+                }
+                else if (date.Substring(11, 5) == "19:00")
+                {
+                    date = date.Replace("19:00", "22:15");
+                }
+                else if (date.Substring(11, 5) == "22:15")
+                {
+                    date = date.Replace("22:15", "10:00");
                 }
             }
             Console.Write("                                        ");
@@ -248,7 +278,7 @@ namespace ConsoleAppBookingCinema
             }
         }
         // input_date - ввод даты
-        static string input_date(string today_date, bool kaftanakinator = true) // Сори Кафтан попросил добавить частичку себя
+        static string input_date(string today_date, bool kaftanakinator = true)
         {
             string date;
             int element = 0;
@@ -286,37 +316,55 @@ namespace ConsoleAppBookingCinema
                     {
                         continue;
                     }
-                    if (!(
-                        int.Parse(date.Substring(0, 2)) >= int.Parse(today_date.Substring(0, 2)) &&
-                        int.Parse(date.Substring(0, 2)) <= 31 &&
-                        int.Parse(date.Substring(3, 2)) == int.Parse(today_date.Substring(3, 2)) &&
-                        int.Parse(date.Substring(3, 2)) <= 12 &&
-                        int.Parse(date.Substring(6, 4)) == int.Parse(today_date.Substring(6, 4)) ||
-                        int.Parse(date.Substring(3, 2)) > int.Parse(today_date.Substring(3, 2)) ||
-                        int.Parse(date.Substring(6, 4)) > int.Parse(today_date.Substring(6, 4))
-                        ))
+                    int day = int.Parse(date.Substring(0, 2));
+                    int month = int.Parse(date.Substring(3, 2));
+                    int year = int.Parse(date.Substring(6, 4));
+
+                    int todayDay = int.Parse(today_date.Substring(0, 2));
+                    int todayMonth = int.Parse(today_date.Substring(3, 2));
+                    int todayYear = int.Parse(today_date.Substring(6, 4));
+                    bool isValidDate = false;
+
+                    if (year >= todayYear)
+                    {
+                        if (month == todayMonth)
+                        {
+                            if (day >= todayDay && day <= 31 && month >= 1 && month <= 12)
+                            {
+                                isValidDate = true;
+                            }
+                        }
+                        else if (month > todayMonth && month <= 12)
+                        {
+                            if (day >= 1 && day <= 31 && month >= 1 && month <= 12)
+                            {
+                                isValidDate = true;
+                            }
+                        }
+                        if (!isValidDate)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("                                                   ");
+                            Console.WriteLine("Кривая дата");
+                            Console.ResetColor();
+                            element = 0;
+                        }
+                        if (element == 10 && isValidDate)
+                        {
+                            break;
+                        }
+                    }
+                    else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("                                                   ");
-                        Console.WriteLine("Такой даты не может быть");
+                        Console.WriteLine("Неверный ввод");
                         Console.ResetColor();
-                        element = 0;
-                    }
-                    if (element == 10)
-                    {
-                        break;
                     }
                 }
                 else if (kaftanakinator == false && date == "")
                 {
                     return today_date;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("                                                   ");
-                    Console.WriteLine("Неверный ввод");
-                    Console.ResetColor();
                 }
             }
             while (true)
@@ -337,32 +385,77 @@ namespace ConsoleAppBookingCinema
                 Console.WriteLine("3 - 19:00     4 - 22:15");
                 Console.Write("\n                                                       ");
                 string time = Console.ReadLine();
-                if (int.Parse(today_date.Substring(11, 2)) <= 10 && time == "1" || time == "10:00")
+                int day = int.Parse(date.Substring(0, 2));
+                int month = int.Parse(date.Substring(3, 2));
+                int year = int.Parse(date.Substring(6, 4));
+
+                int todayDay = int.Parse(today_date.Substring(0, 2));
+                int todayMonth = int.Parse(today_date.Substring(3, 2));
+                int todayYear = int.Parse(today_date.Substring(6, 4));
+
+                bool isToday = (day == todayDay && month == todayMonth && year == todayYear);
+
+                if (!isToday)
                 {
-                    date += " 10:00";
-                    break;
-                }
-                else if (int.Parse(today_date.Substring(11, 2)) <= 14 && time == "2" || time == "14:30")
-                {
-                    date += " 14:30";
-                    break;
-                }
-                else if (int.Parse(today_date.Substring(11, 2)) <= 19 && time == "3" || time == "19:00")
-                {
-                    date += " 19:00";
-                    break;
-                }
-                else if (int.Parse(today_date.Substring(11, 2)) <= 22 && time == "4" || time == "22:15")
-                {
-                    date += " 22:15";
-                    break;
+                    if (time == "1" || time == "10:00")
+                    {
+                        date += " 10:00";
+                        break;
+                    }
+                    else if (time == "2" || time == "14:30")
+                    {
+                        date += " 14:30";
+                        break;
+                    }
+                    else if (time == "3" || time == "19:00")
+                    {
+                        date += " 19:00";
+                        break;
+                    }
+                    else if (time == "4" || time == "22:15")
+                    {
+                        date += " 22:15";
+                        break;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("                                               ");
+                        Console.WriteLine("Неправильное время");
+                        Console.ResetColor();
+                    }
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("                                               ");
-                    Console.WriteLine("Неправильное время");
-                    Console.ResetColor();
+                    int currentHour = int.Parse(today_date.Substring(11, 2));
+
+                    if ((time == "1" || time == "10:00") && currentHour <= 10)
+                    {
+                        date += " 10:00";
+                        break;
+                    }
+                    else if ((time == "2" || time == "14:30") && currentHour <= 14)
+                    {
+                        date += " 14:30";
+                        break;
+                    }
+                    else if ((time == "3" || time == "19:00") && currentHour <= 19)
+                    {
+                        date += " 19:00";
+                        break;
+                    }
+                    else if ((time == "4" || time == "22:15") && currentHour <= 22)
+                    {
+                        date += " 22:15";
+                        break;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("                                               ");
+                        Console.WriteLine("Неправильное время");
+                        Console.ResetColor();
+                    }
                 }
             }
             return date;
@@ -373,8 +466,8 @@ namespace ConsoleAppBookingCinema
             int row;
             int seat;
             string action;
-            
-            string date = input_date(today_date);
+
+            string date = input_date(today_date, false);
             string date2 = today_date;
             press_to_next();
             cinema_hall.taking_seat(date);
@@ -413,10 +506,13 @@ namespace ConsoleAppBookingCinema
                     Console.Clear();
                     if (input.Length == 2)
                     {
-                        if (int.TryParse(input[0], out row) && int.TryParse(input[1], out seat))
+                        bool bool1 = int.TryParse(input[0], out row);
+                        bool bool2 = int.TryParse(input[1], out seat);
+                        if (bool1 && cinema_hall.get_number_of_row() >= row && row > 0 && bool2 && cinema_hall.get_number_of_seat() >= seat && seat > 0)
                         {
                             cinema_hall.show_cinema_hall(date);
                             cinema_hall.book_ticket(date, row, seat);
+                            press_to_next();
                             cinema_hall.taking_seat(today_date);
                             cinema_hall.show_cinema_hall(date);
                         }
